@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            color: grey;
+        }
+    </style>
+</head>
+<body>
+    {% if cart %}
+        
+    <h1>Cart:</h1>
+    <ul>
+    {% for item in cart %}
+        <li><a href="{{ url_for('cart_remove')}}?id={{ loop.index-1 }}">X</a>{{ item.name }} - {{ item.price }}</li>    
+    {% endfor %}
+    </ul>
+    {% endif %}
+
+    <h1>Items:</h1>
+    <ul>
+        {% for item in items %}
+            <li><a href="{{ url_for('get_item', id=loop.index - 1) }}">{{ item.name }} - {{ item.price }}</a></li>
+        {% endfor %}
+    </ul>
+    
+
+</body>
+</html>
